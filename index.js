@@ -6,10 +6,10 @@ var bnet = require('./provider/bnet');
 var internals = {};
 
 exports.register = function(plugin, options, next) {
+    console.log('bell outside: ', plugin.plugins['bell']);
     plugin.dependency('bell', function(plugin, next) {
         // Register the bnet provider with the built-ins
-        console.log('plugins: ', plugin);
-        plugin.plugins.bell.providers.bnet = bnet;
+        console.log('bell inside: ', plugin.plugins['bell']);
         next();
     });
     next();
