@@ -5,6 +5,9 @@ var async = require('async');
 var internals = {};
 
 exports = module.exports = function (options) {
+    var options = options || {};
+    options.region = options.region || 'us';
+
     var masheryHost = getMasheryHost(options.region);
     return {
         protocol: 'oauth2',
