@@ -13,16 +13,36 @@
   "keywords": [
     "bnet",
     "hapi",
+    "login",
+    "authentication",
+    "plugin",
     "bell",
     "oauth"
   ],
+  "engines": {
+    "node": ">=0.10.30"
+  },
   "author": "Ryan Tucker <rtucker88@gmail.com>",
-  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/rtucker88/hapi-bnet-provider/raw/master/LICENSE"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/rtucker88/hapi-bnet-provider/issues"
   },
   "homepage": "https://github.com/rtucker88/hapi-bnet-provider",
   "dependencies": {
     "async": "^0.9.0"
+  },
+  "peerDependencies": {
+    "hapi": ">=6.x.x"
+  },
+  "devDependencies": {
+    "hapi": "6.x.x",
+    "bell": "^1.3.x",
+    "lab": "5.x.x",
+    "code": "1.x.x"
   }
 }
