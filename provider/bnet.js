@@ -8,20 +8,21 @@ exports = module.exports = function (options) {
     var options = options || {};
     options.region = options.region || 'us';
 
+    var authHost = getHost(options.region);
     var masheryHost = getMasheryHost(options.region);
     return {
         protocol: 'oauth2',
-        auth: 'https://' + getHost(options.region) + '/oauth/authorize',
-        token: 'https://' + getHost(options.region) + '/oauth/token',
+        auth: options.authorizationURL || 'https://' + authHost + '/oauth/authorize',
+        token: options.tokenURL || 'https://' + authHost + '/oauth/token',
         profile: function(credentials, params, get, callback) {
             async.parallel({
                 id: function(done) {
-                    get('https://' + masheryHost + '/account/user/id', null, function(json) {
+                    get(options.idURL || 'https://' + masheryHost + '/account/user/id', null, function(json) {
                         return done(null, json.id);
                     });
                 },
                 battletag: function(done) {
-                    get('https://' + masheryHost + '/account/user/battletag', null, function(json) {
+                    get(options.battletagURL || 'https://' + masheryHost + '/account/user/battletag', null, function(json) {
                         return done(null, json.battletag);
                     });
                 }
